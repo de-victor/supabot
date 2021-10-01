@@ -1,6 +1,6 @@
 /target/
 /.vscode/
-/.settgins/
+/.settings/
 *.bak
 *.db
 .classpath
