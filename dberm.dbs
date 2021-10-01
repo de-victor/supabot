@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="speedrundb" id="Project_f1f" database="LogicalDesign" >
+	<schema name="speedrundb" >
+		<table name="categories" prior="Entity" >
+			<column name="category_id" type="int" jt="4" mandatory="y" />
+			<index name="Pk_categories_category_id" unique="PRIMARY_KEY" >
+				<column name="category_id" />
+			</index>
+			<fk name="Fk_categories_runs" to_schema="speedrundb" to_table="runs" type="Identifying" >
+				<fk_column name="category_id" pk="category_id" />
+			</fk>
+			<fk name="Fk_categories_variables" to_schema="speedrundb" to_table="variables" type="Identifying" >
+				<fk_column name="category_id" pk="category_id" />
+			</fk>
+		</table>
+		<table name="games" prior="game" >
+			<column name="game_id" type="bigint" jt="-5" mandatory="y" />
+			<index name="Pk_game_game_id" unique="PRIMARY_KEY" >
+				<column name="game_id" />
+			</index>
+			<fk name="Fk_games_runs" to_schema="speedrundb" to_table="runs" type="Identifying" >
+				<fk_column name="game_id" pk="game_id" />
+			</fk>
+		</table>
+		<table name="runners" prior="runner" >
+			<column name="runner_id" type="bigint" jt="-5" mandatory="y" />
+			<index name="Pk_runner_runner_id" unique="PRIMARY_KEY" >
+				<column name="runner_id" />
+			</index>
+			<fk name="Fk_runners_runs" to_schema="speedrundb" to_table="runs" type="Identifying" >
+				<fk_column name="runner_id" pk="runner_id" />
+			</fk>
+		</table>
+		<table name="runs" prior="Entity" >
+			<column name="run_id" type="int" jt="4" mandatory="y" />
+			<column name="runner_id" type="bigint" jt="-5" mandatory="y" />
+			<column name="game_id" type="bigint" jt="-5" mandatory="y" />
+			<column name="category_id" type="int" jt="4" mandatory="y" />
+			<column name="game_system_id" type="int" jt="4" mandatory="y" />
+			<index name="Pk_runs_run_id" unique="PRIMARY_KEY" >
+				<column name="run_id" />
+			</index>
+			<index name="Unq_runs_runner_id" unique="UNIQUE_KEY" >
+				<column name="runner_id" />
+			</index>
+			<index name="Unq_runs_game_id" unique="UNIQUE_KEY" >
+				<column name="game_id" />
+			</index>
+			<index name="Unq_runs_category_id" unique="UNIQUE_KEY" >
+				<column name="category_id" />
+			</index>
+			<index name="Unq_runs_game_system_id" unique="UNIQUE_KEY" >
+				<column name="game_system_id" />
+			</index>
+		</table>
+		<table name="system_game" prior="game_system" >
+			<column name="game_system_id" type="int" jt="4" mandatory="y" />
+			<index name="Pk_game_system_game_system_id" unique="PRIMARY_KEY" >
+				<column name="game_system_id" />
+			</index>
+			<fk name="Fk_game_system_runs" to_schema="speedrundb" to_table="runs" type="Identifying" >
+				<fk_column name="game_system_id" pk="game_system_id" />
+			</fk>
+		</table>
+		<table name="variables" prior="Entity" >
+			<column name="variable_id" type="int" jt="4" mandatory="y" />
+			<column name="category_id" type="int" jt="4" mandatory="y" />
+			<index name="Pk_variables_variable_id" unique="PRIMARY_KEY" >
+				<column name="variable_id" />
+			</index>
+			<index name="Unq_variables_category_id" unique="UNIQUE_KEY" >
+				<column name="category_id" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout_2236" show_column_type="y" show_relation="columns" >
+		<entity schema="speedrundb" name="categories" color="C1D8EE" x="656" y="224" />
+		<entity schema="speedrundb" name="games" color="C1D8EE" x="48" y="288" />
+		<entity schema="speedrundb" name="runners" color="C1D8EE" x="48" y="144" />
+		<entity schema="speedrundb" name="runs" color="C1D8EE" x="320" y="224" />
+		<entity schema="speedrundb" name="system_game" color="C1D8EE" x="64" y="432" />
+		<entity schema="speedrundb" name="variables" color="C1D8EE" x="656" y="48" />
+	</layout>
+</project>
