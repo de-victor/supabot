@@ -9,7 +9,7 @@ public enum BotCommandsEnum {
 
     TOP("!top"),
     RANDOMPB("!randompb"),
-    PB("!pbs"),
+    PB("!pb"),
     SETPBGAME("!setpbgame"),
     SETPBBYID("!setpbbyid"),
     COMLIST("!comlist"),

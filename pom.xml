@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.malabar</groupId>
 	<artifactId>supabot</artifactId>
-	<version>0.0.1</version>
+	<version>1.0</version>
 	<name>supabot</name>
 	<description>Boot para acessar a api do site speedgaming.com trazendo dados sobre runs do streamer na twitch</description>
 
@@ -77,7 +77,7 @@
 							<goal>repackage</goal>
 						</goals>
 						<configuration>
-							<classifier>spring-boot</classifier>
+							<classifier>all</classifier>
 							<mainClass>br.com.malabar.supabot.App</mainClass>
 						</configuration>
 					</execution>
